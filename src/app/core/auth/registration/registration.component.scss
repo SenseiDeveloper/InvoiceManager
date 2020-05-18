@@ -1,0 +1,46 @@
+form{
+  background: white;
+  height: 100%;
+  padding: 40px 40px 45px 40px;
+  width: 300px;
+  h1{
+    font-size: 18px;
+    color: #27aaf0;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-top: 20px;
+  }
+  p{
+    font-size: 14px;
+  }
+  .warning{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
+  button{
+    background: #27aaf0;
+    border: none;
+    width: 100%;
+    color: white;
+    border-radius: 18px;
+    font-size: 16px;
+    padding: 10px 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .4s;
+    margin-top: 5px;
+  }
+  button:hover,
+  button:active{
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.20);
+    transition: all .4s;
+  }
+  button:disabled{
+    background: grey;
+  }
+}

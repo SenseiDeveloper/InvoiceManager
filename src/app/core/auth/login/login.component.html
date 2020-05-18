@@ -1,0 +1,21 @@
+<form [formGroup]="auth" (ngSubmit)="submit()">
+  <h1>Login</h1>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>USERNAME</mat-label>
+      <input matInput placeholder="USERNAME" formControlName="email">
+      <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field>
+  </p>
+  <p class="warning" *ngIf="f.email.touched && f.email.errors?.required">Email обов'язковий</p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>PASSWORD</mat-label>
+      <input matInput placeholder="PASSWORD" type="password" formControlName="password">
+      <mat-icon matSuffix>fingerprint</mat-icon>
+    </mat-form-field>
+  </p>
+  <p class="warning" *ngIf="f.password.touched && f.password.errors?.required">Пароль обов'язковий</p>
+
+  <button [disabled]="auth.invalid" >Login</button>
+</form>

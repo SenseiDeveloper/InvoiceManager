@@ -1,0 +1,26 @@
+<div class="authWraper">
+  <div class="formWrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 columns">
+          <div class="mnu">
+            <ul>
+              <li [routerLink]="['login']" routerLinkActive="active" >Login</li>
+              <li [routerLink]="['registration']" routerLinkActive="active">Register</li>
+            </ul>
+          </div>
+          <div class="logo">
+            <div class="textBlock">
+              <h2>Invoice Manager</h2>
+              <p>Твій онлайн менеджер</p>
+            </div>
+            <img src="../../../assets/image/man.png" alt="man">
+          </div>
+        </div>
+        <div class="col-lg-4 columns">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

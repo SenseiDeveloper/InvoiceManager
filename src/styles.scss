@@ -1,1 +1,129 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/ngx-toastr/toastr.css';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+*{
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3,h4,h5{
+  font-family: 'Roboto-Medium';
+}
+p{
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-style: normal;
+}
+body button{
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-style: normal;
+  border-radius: .125rem;
+  text-transform: uppercase;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  text-transform: uppercase;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-cancel{
+  background-color: black;
+  padding: 1em;
+  font-size: 13px;
+  transition: all .4s;
+}
+
+.btn-cancel:hover,
+.btn-cancel:active{
+  transition: all .4s;
+  box-shadow: 0 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+
+.btn-successe{
+  background-color: #33b5e5;
+  padding: 1em;
+  font-size: 13px;
+  transition: all .4s;
+}
+.btn-successe:hover,
+.btn-successe:active{
+  background-color: #4abde8;
+  transition: all .4s;
+  box-shadow: 0 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+.btn-del{
+  display: block;
+  background-color:#ff3547;
+  font-size: 12px;
+  padding: .7rem 1.6rem;
+  transition: all .4s;
+}
+.btn-del:hover,
+.btn-del:active{
+  background-color: #fb5f6e;
+  transition: all .4s;
+  box-shadow: 0 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+.btn-dubl{
+  display: block;
+  font-size: 12px;
+  padding: .7rem 1.6rem;
+  transition: all .4s;
+  background-color: #4285f4;
+}
+
+.btn-dubl:hover,
+.btn-dubl:active{
+  background-color: #5a95f5;
+  transition: all .4s;
+  box-shadow: 0 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+.btn-edit{
+  display: block;
+  font-size: 12px;
+  padding: .7rem 1.6rem;
+  transition: all .4s;
+  background-color: #f44336;
+}
+.btn-edit:hover,
+.btn-edit:active{
+  background-color: #ff5346;
+  transition: all .4s;
+  box-shadow: 0 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+.title-page{
+  text-align: center;
+  color: #27aaf0;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.TableBlock{
+  padding: 20px;
+  button.btn-successe{
+    font-size: 14px;
+    display: block;
+    width: 100%;
+  }
+  .example-full-width,
+  mat-form-field{
+    width: 100%;
+  }
+  table {
+    width: 100%;
+    .colPositon{
+      text-align: center;
+    }
+    ul{
+      text-align: right;
+      li{
+        list-style: none;
+        display: inline-block;
+        margin: 5px 3px;
+      }
+    }
+  }
+}

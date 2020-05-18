@@ -1,0 +1,69 @@
+.authWraper{
+  background: linear-gradient(45deg, rgba(21,50,119,1) 0%, rgba(18,170,220,1) 100%);
+  height: 100vh;
+  width: 100%;
+  .formWrap{
+    position: absolute;
+    background: linear-gradient(45deg, rgba(21,50,119,1) 0%, rgba(18,170,220,1) 100%);
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.35);
+    transform: translate(-50%, -50%);
+    .mnu{
+      float: right;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-right: -32px;
+      ul{
+        li{
+          list-style: none;
+          text-transform: uppercase;
+          font-family: 'Roboto';
+          font-weight: 300;
+          font-style: normal;
+          font-size: 15px;
+          padding: 10px 30px;
+          margin: 2px 0;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          cursor: pointer;
+          color: white;
+          transition: all .4s;
+        }
+        li:hover,
+        li:active,
+        li:visited{
+          background: white;
+          color: #673ab7;
+          font-weight: 400;
+          transition: all .4s;
+          border: none;
+          box-shadow: -9px 0px 24px -5px rgba(0,0,0,0.45);
+        }
+      }
+    }
+    .mnu ul .active{
+      background: white;
+      color: #673ab7;
+      font-weight: 400;
+      transition: all .4s;
+      border: none;
+      box-shadow: -9px 0px 24px -5px rgba(0,0,0,0.45);
+    }
+    .logo{
+      padding: 40px 0px 0px 40px;
+      .textBlock{
+        float: left;
+        color: white;
+        margin-top: 20%;
+        h2{
+          font-size: 42px;
+        }
+        p{
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

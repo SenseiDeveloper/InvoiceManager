@@ -1,0 +1,56 @@
+<form [formGroup]="auth" (ngSubmit)="submit()">
+  <h1>Registration</h1>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>NAME</mat-label>
+      <input matInput
+             placeholder="NAME"
+             formControlName="name">
+      <mat-icon matSuffix>account_box</mat-icon>
+    </mat-form-field>
+  </p>
+  <p class="warning" *ngIf="f.name.touched && f.name.errors?.required">Імя обов'язкове</p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>USERNAME</mat-label>
+      <input
+        matInput
+        placeholder="USERNAME"
+        formControlName="email"
+      >
+      <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field>
+  </p>
+  <p class="warning" *ngIf="f.email.touched && f.email.errors?.required">Email обов'язковий</p>
+  <p class="warning" *ngIf="f.email.touched && f.email.errors?.email">Некоректний email</p>
+  <p class="warning" *ngIf="f.email.touched && f.email.getError('invalidEmail')">Даний email занятий</p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>PASSWORD</mat-label>
+      <input
+        matInput
+        placeholder="PASSWORD"
+        type="password"
+        formControlName="password"
+      >
+      <mat-icon matSuffix>fingerprint</mat-icon>
+    </mat-form-field>
+  </p>
+  <p class="warning" *ngIf="f.password.touched && f.password.errors?.required">Пароль обов'язковий</p>
+  <p class="warning" *ngIf="f.password.touched && f.password.errors?.minlength">Пароль повинен бути не менше 6 символів</p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>CONFIRM PASSWORD</mat-label>
+      <input
+        matInput
+        placeholder="CONFIRM PASSWORD"
+        type="password"
+        formControlName="secondPassword"
+      >
+      <mat-icon matSuffix>fingerprint</mat-icon>
+    </mat-form-field>
+  </p>
+  <p class="warning" *ngIf="f.secondPassword.touched && f.secondPassword.errors?.required">Підтвердіть пароль</p>
+  <p class="warning" *ngIf="f.secondPassword.touched && f.secondPassword.errors?.mustMatch">Паролі не співпадають</p>
+  <button [disabled]="auth.invalid">Registration</button>
+</form>
