@@ -1,7 +1,7 @@
 # InvoiceManager
 Use:
-- node server (express);
-- material;
-- bootstrap;
-- fontawesome;
-- drag and drop;
+- Angular 7.2;
+- Node server (express);
+- Material;
+- Bootstrap;
+- Drag and drop;

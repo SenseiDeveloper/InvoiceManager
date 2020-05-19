@@ -25,6 +25,7 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "angular-material": "^1.1.22",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.0",
     "bootstrap-4-grid": "^3.4.0",
     "core-js": "^2.5.4",
     "cors": "^2.8.5",

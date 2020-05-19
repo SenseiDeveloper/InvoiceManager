@@ -32,7 +32,8 @@
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap-4-grid/css/grid.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "./node_modules/roboto-fontface/css/roboto/roboto-fontface.css"
+              "./node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

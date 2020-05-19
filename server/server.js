@@ -292,15 +292,21 @@ app.post('/api/createuser', cors(), function (req,res) {
 app.post('/api/login', cors(),function (req,res){
   let userData = req.body;
 
-  USERS.filter(user => {
-    if(user.mail === userData.email && user.password=== userData.password ){
-      let payload = { subject: user.id }
-      let token = jwt.sign(payload,'secretKey');
-      res.status(200).send({token, name: user.name});
-    }else{
-      res.status(401).send('Missing password or email');
+ let find = USERS.filter(user => {
+    if(user.mail === userData.email && user.password === userData.password ){
+      return user;
+    }else  {
+       return 0;
     }
   });
+
+ if(find.length !==0 ){
+   let payload = { subject: find.id };
+   let token = jwt.sign(payload,'secretKey');
+   res.status(200).send({token, name: find.name});
+ } else {
+   res.status(401).send('Missing password or email');
+ }
 });
 
 //API GET PRODUCTS LIST
