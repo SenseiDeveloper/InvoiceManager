@@ -1,0 +1,50 @@
+
+<div class="filteBlock">
+  <div class="title">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-10"><h3><i class="fas fa-filter"></i>  Інвойс фільтер</h3></div>
+        <div class="col-xl-2">
+          <div class="btn">
+            <button class="btn-successe" (click)="filterModal()">
+              <i class="fas fa-plus" *ngIf="buttonType === false"></i>
+              <i class="fas fa-minus" *ngIf="buttonType === true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+  <div class="filter" *ngIf="buttonType === true" [ngClass]="buttonType ? 'visionFilter': 'filter'">
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectFilter" (ngModelChange)="selectedFilter($event)">
+      <mat-radio-button value="Price">Ціна</mat-radio-button>
+      <mat-radio-button value="Count">Кількість продуктів</mat-radio-button>
+      <mat-radio-button value="Date">Дата</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+<div class="chartBar">
+  <ngx-charts-bar-vertical *ngIf="selectFilter === 'Price' || selectFilter === 'Count'"
+                           [view]="[1100, 400]"
+                           [scheme]="colorScheme"
+                           [results]="filterInvoice"
+                           [xAxis]="true"
+                           [legend]="true"
+                           [showXAxisLabel]="true"
+                           [showYAxisLabel]="true"
+                           [legendTitle]="'Інвойси'"
+                           [showDataLabel]="true">
+  </ngx-charts-bar-vertical>
+  <ngx-charts-area-chart-stacked *ngIf="selectFilter === 'Date'"
+                                 [view]="[1100, 400]"
+                                 [scheme]="colorScheme"
+                                 [legend]="true"
+                                 [showXAxisLabel]="true"
+                                 [showYAxisLabel]="true"
+                                 [xAxis]="true"
+                                 [yAxis]="true"
+                                 [legendTitle]="'Інвойси'"
+                                 [timeline]="true"
+                                 [results]="filterInvoice">
+  </ngx-charts-area-chart-stacked>
+</div>

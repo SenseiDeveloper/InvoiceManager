@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="viewContainer">
+        <header>
+         <div class="textBlock">
+           <h2 class="title">{{activeInvoice?.name}}</h2>
+           <p class="data">{{activeInvoice?.data | date: 'dd/MM/yyyy'}}</p>
+           <p class="totalPrice">Ціна: <span>{{activeInvoice?.totalPrice}} $</span></p>
+         </div>
+          <div class="rightBlock">
+            <app-edit-button [idInvoice] = "activeInvoice?.id"></app-edit-button>
+            <app-delete-button [invoice] = activeInvoice></app-delete-button>
+          </div>
+        </header>
+        <main>
+          <section *ngFor="let products of activeInvoice?.products">
+            <ul>
+              <li><h3>{{products.name}}</h3></li>
+              <li><p class="descr">{{products.description}}</p></li>
+              <li><p><span>{{products.price}} <i class="fas fa-dollar-sign"></i></span></p></li>
+              <li><p>Знижка: <span>{{products.discount}} <i class="fas fa-percentage"></i></span></p></li>
+            </ul>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>

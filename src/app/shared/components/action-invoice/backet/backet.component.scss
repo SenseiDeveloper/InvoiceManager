@@ -1,0 +1,12 @@
+form{
+  display: inline-block;
+  .inpt{
+    margin: 0 4px;
+  }
+  .inpt-desc{
+    width: 100%;
+    textarea {
+      resize: none;
+    }
+  }
+}

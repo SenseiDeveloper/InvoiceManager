@@ -1,0 +1,84 @@
+<div class="createInvoiceBlock">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12">
+        <h2 class="title-page"><i class="fas fa-receipt"></i> {{invoiceTitle}}</h2>
+      </div>
+    </div>
+  </div>
+  <div cdkDropListGroup>
+    <div class="bar leftBar">
+      <mat-form-field class="full-width">
+        <mat-label>Пошук продуктів</mat-label>
+        <input matInput placeholder="Пошук продуктів" [(ngModel)]="term">
+      </mat-form-field>
+      <div
+        class="list"
+        cdkDropList
+        cdkDropListSortingDisabled
+        [cdkDropListData]="products"
+        #inactiveList="cdkDropList"
+        [cdkDropListConnectedTo]="[activeList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box"
+             [cdkDragData]="item"
+             *ngFor="let item of products | filter:term"
+             cdkDrag
+        >
+          <h2>{{item.name}}</h2>
+          <p>{{item.price}} <span> <i class="fas fa-dollar-sign"></i></span></p>
+          <div class="hiddenDesc">
+            <p>{{item.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bar rightbar basket">
+      <form [formGroup]="invForm">
+        <ul>
+          <li>
+            <mat-form-field class="inpt">
+              <mat-label>Назва інвойсу</mat-label>
+              <input matInput placeholder="Назва інвойсу"  formControlName="name" >
+            </mat-form-field>
+          </li>
+          <li>
+            <mat-form-field>
+              <mat-label>Виберіть дату</mat-label>
+              <input matInput [matDatepicker]="picker"
+                     formControlName="picker"
+              >
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </li>
+        </ul>
+      </form>
+      <div
+        cdkDropList
+        [cdkDropListData]="selectProducts"
+        class="list list-height"
+        #activeList="cdkDropList"
+        [cdkDropListConnectedTo]="[inactiveList]"
+        (cdkDropListDropped)="drop($event)"
+
+      >
+        <div class="example-box wrap-box"
+             [cdkDragData]="item"
+             *ngFor="let item of selectProducts"
+             cdkDrag >
+              <app-backet [itm]="item" (valueChange)="formValue($event)"></app-backet>
+        </div>
+        <button class="btn-successe" (click)="submit()" >
+          <i class="fas fa-shopping-basket"></i>
+          <ul>
+            <li>Загальна ціна: {{price.total}}</li>
+            <li>Знижка: {{price.discount}}</li>
+            <li>Ціна зі знижкою: {{price.totalPrice}}</li>
+          </ul>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<form [formGroup]="invoiceForms">
+      <mat-form-field class="inpt">
+        <mat-label>Назва</mat-label>
+        <input matInput placeholder="Назва"  formControlName="name" >
+      </mat-form-field>
+      <mat-form-field class="inpt">
+        <mat-label>Ціна $</mat-label>
+        <input matInput placeholder="Ціна" type="number" formControlName="price" min="0" >
+      </mat-form-field>
+      <mat-form-field class="inpt">
+        <mat-label>Скидка %</mat-label>
+        <input matInput placeholder="Скидка" type="number" formControlName="discount" min="0" max="100">
+      </mat-form-field>
+      <mat-form-field class="inpt-desc">
+        <mat-label>Опис</mat-label>
+        <textarea matInput placeholder="Опис" formControlName="description" ></textarea>
+      </mat-form-field>
+</form>

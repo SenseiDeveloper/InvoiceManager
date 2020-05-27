@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{propertyObj.title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Назва продукта</mat-label>
+      <input matInput placeholder="Назва продукта" formControlName="name">
+    </mat-form-field>
+    <p class="alert alert-danger"
+       *ngIf="productForm.controls['name'].touched && productForm.controls['name'].errors">
+      Поле обов'язкове для заповнення
+    </p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Опис продукта</mat-label>
+      <input matInput placeholder="Опис продукта"  formControlName="description">
+    </mat-form-field>
+    <p class="alert alert-danger"
+       *ngIf="productForm.controls['description'].touched && productForm.controls['description'].errors">
+      Поле обов'язкове для заповнення
+    </p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Ціна продукта</mat-label>
+      <input matInput placeholder="Ціна продукта"  type="number" formControlName="price">
+    </mat-form-field>
+    <p class="alert alert-danger"
+      *ngIf="productForm.controls['price'].touched && productForm.controls['price'].errors">
+      Поле обов'язкове для заповнення
+    </p>
+    <button
+      class="btn btn-successe"
+      [disabled]="productForm.invalid"
+    >{{propertyObj.buttonType}}</button>
+  </form>
+</div>

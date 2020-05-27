@@ -1,0 +1,39 @@
+.filteBlock{
+  width: 100%;
+  .title{
+    background: rgba(0, 0, 0, 0.2);
+    h3{
+      font-size: 16px;
+      line-height: 40px;
+    }
+    .btn{
+      display: block;
+      text-align: right;
+      button{
+        padding: 5px 10px;
+      }
+    }
+  }
+  .filter{
+    background: rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    display: none;
+    animation: showBlock 1s linear forwards;
+
+    .mat-radio-button ~ .mat-radio-button {
+      margin-left: 16px;
+    }
+  }
+  .visionFilter{
+    display: block;
+    animation: showBlock 1s linear forwards;
+  }
+  @keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

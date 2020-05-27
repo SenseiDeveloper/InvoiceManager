@@ -1,0 +1,20 @@
+form{
+  padding: 10px;
+  .example-full-width{
+    width: 450px;
+  }
+  button{
+    width: 100%;
+    font-family: 'Roboto';
+    font-weight: 100;
+    font-style: normal;
+    background-color: #33b5e5;
+    padding: 1em;
+    font-size: 13px;
+    transition: all .4s;
+    color: white;
+  }
+  p{
+    font-size: 14px;
+  }
+}

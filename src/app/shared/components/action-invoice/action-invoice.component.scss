@@ -1,0 +1,154 @@
+.createInvoiceBlock{
+  padding: 20px 0 20px 20px;
+  .leftBar{
+    width: 50%;
+    .example-box:hover .hiddenDesc{
+      display: block;
+    }
+  }
+  .full-width{
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+  }
+  .rightbar {
+    width: 45%;
+    position: relative;
+    form{
+      background: rgba(0,0,0,0.1);
+      ul{
+        text-align: center;
+        li{
+          list-style: none;
+          display: inline-block;
+          margin: 5px;
+        }
+      }
+    }
+    .list-height{
+      min-height: 200px;
+      button{
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: -130px;
+        left: 0px;
+        i{
+          font-size:45px;
+          float: right;
+          padding: 25px;
+          border-left: 2px solid white;
+        }
+        ul{
+          li{
+            display: block;
+            margin: 5px 3px;
+            font-size: 16px;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  .bar{
+    max-width: 100%;
+    margin: 0 25px 25px 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .list {
+    min-height: 800px;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+    padding: 5px;
+    .wrap-box{
+      width: 100%;
+    }
+  }
+
+  .basket{
+    //padding-right: 10px;
+    box-shadow: 0 19px 0px 0px white,
+    0 -19px 0px 0px white,
+    1px 0 10px -6px rgba(0,0,0,0.45),
+    -1px 0 10px -6px rgba(0,0,0,0.45);
+  }
+  .example-box {
+    padding: 20px 10px;
+    background: linear-gradient(45deg, rgba(236,236,236,1) 0%, rgba(255,255,255,1) 66%);
+    border-radius: 2px;
+    border: 1px solid rgba(236,236,236,1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    font-size: 14px;
+    margin: 5px;
+    width: 250px;
+    float: left;
+    position: relative;
+    h2{
+      font-size: 16px;
+      color: black;
+      text-transform: uppercase;
+    }
+    span{
+      background: rgba(231, 76, 60, 1);
+      color: white;
+      border-radius: 50%;
+      padding: 7px 12px;
+    }
+    p{
+      font-size: 16px;
+      font-family: 'Roboto-Medium';
+
+    }
+    .hiddenDesc{
+      background: #33b5e5;
+      width: 100%;
+      position:absolute;
+      left: 0px;
+      bottom: -50px;
+      height: 50px;
+      padding: 5px;
+      z-index: 9999;
+      display: none;
+      p{
+        text-align: left;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-style: normal;
+      }
+    }
+  }
+
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .example-box:last-child {
+    border: none;
+  }
+
+  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+}

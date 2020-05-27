@@ -1,0 +1,36 @@
+<div class="filteBlock">
+  <div class="title">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-10"><h3><i class="fas fa-filter"></i>  Продукт фільтер</h3></div>
+        <div class="col-xl-2">
+          <div class="btn">
+            <button class="btn-successe" (click)="filterModal()">
+              <i class="fas fa-plus" *ngIf="buttonType === false"></i>
+              <i class="fas fa-minus" *ngIf="buttonType === true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="filter" *ngIf="buttonType === true" [ngClass]="buttonType ? 'visionFilter': 'filter'">
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectFilter" (ngModelChange)="selectedFilter($event)">
+      <mat-radio-button value="Price">Ціна</mat-radio-button>
+      <mat-radio-button value="Count">Частота використання</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+<div class="chartBar">
+  <ngx-charts-pie-chart
+    [view]="[1100, 400]"
+    [scheme]="colorScheme"
+    [results]="filterProducts"
+    [legend]="true"
+    [labels]="true"
+    [doughnut]="true"
+    [legendTitle]="'Продукти'"
+    [legendPosition]="'right'"
+  >
+  </ngx-charts-pie-chart>
+</div>
