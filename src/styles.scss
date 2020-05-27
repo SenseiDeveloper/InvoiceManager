@@ -1,5 +1,6 @@
 @import '../node_modules/ngx-toastr/toastr.css';
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~normalize.css';
 
 *{
   margin: 0;
@@ -15,7 +16,7 @@ p{
 }
 body button{
   font-family: 'Roboto';
-  font-weight: 100;
+  font-weight: 300;
   font-style: normal;
   border-radius: .125rem;
   text-transform: uppercase;

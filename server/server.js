@@ -36,7 +36,7 @@ let PRODUCTS = [
   },
   {
     id:4,
-    name: 'Lemon ',
+    name: 'Lemon',
     description: 'fresh',
     price: 4
   },
@@ -95,56 +95,64 @@ let INVOICE = [
         name: "Blueberry",
         description: "fresh",
         price: 15,
-        discount: 5
+        discount: 5,
+        count: 1
       },
       {
         id: 5,
         name: "Cherry",
         description: "fresh",
         price: 10,
-        discount: 15
+        discount: 15,
+        count: 1
       },
       {
         id: 8,
         name: "Watermelon",
         description: "salat",
         price: 20,
-        discount: 20
+        discount: 20,
+        count: 1
       },
       {
         id: 9,
         name: "Pineapple",
         description: "salat",
         price: 30,
-        discount: 10
+        discount: 10,
+        count: 1
       },
       {
         id: 10,
         name: "Orange",
         description: "salat",
         price: 17,
-        discount: 30
+        discount: 30,
+        count: 1
       },
       {
         id: 4,
-        name: "Lemon ",
+        name: "Lemon",
         description: "fresh",
         price: 4,
-        discount: 40
+        discount: 40,
+        count: 1
       },
       {
         id: 3,
         name: "Apple",
         description: "eating",
         price: 7,
-        discount: 20
+        discount: 20,
+        count: 1
       },
       {
         id: 1,
         name: "Grapes",
         description: "eating",
         price: 5,
-        discount: 10
+        discount: 10,
+        count: 1
       }
     ]
   },
@@ -159,28 +167,32 @@ let INVOICE = [
         name: "Banana",
         description: "salat",
         price: 11,
-        discount: 11
+        discount: 11,
+        count: 1
       },
       {
         id: 2,
         name: "Lime",
         description: "eating",
         price: 3,
-        discount: 12
+        discount: 12,
+        count: 1
       },
       {
         id: 3,
         name: "Apple",
         description: "eating",
         price: 7,
-        discount: 40
+        discount: 40,
+        count: 1
       },
       {
         id: 4,
-        name: "Lemon ",
+        name: "Lemon",
         description: "fresh",
         price: 4,
-        discount: 50
+        discount: 50,
+        count: 1
       }
     ]
   },
@@ -195,14 +207,16 @@ let INVOICE = [
         name: "Lime",
         description: "eating",
         price: 40,
-        discount: 100
+        discount: 100,
+        count: 1
       },
       {
         id: 11,
         name: "Avocado",
         description: "eating",
         price: 26,
-        discount: 10
+        discount: 10,
+        count: 1
       }
     ]
   },
@@ -210,35 +224,39 @@ let INVOICE = [
     id: 1589387651868,
     name: "testing",
     data: "2020-05-03T21:00:00.000Z",
-    totalPrice: "40.0",
+    totalPrice: 40.0,
     products: [
       {
         id: 4,
-        name: "Lemon ",
+        name: "Lemon",
         description: "fresh",
         price: 4,
-        discount: 10
+        discount: 10,
+        count: 1
       },
       {
         id: 7,
         name: "Banana",
         description: "salat",
         price: 11,
-        discount: 15
+        discount: 15,
+        count: 1
       },
       {
         id: 6,
         name: "Blueberry",
         description: "fresh",
         price: 15,
-        discount: 20
+        discount: 20,
+        count: 1
       },
       {
         id: 5,
         name: "Cherry",
         description: "fresh",
         price: 10,
-        discount: 5
+        discount: 5,
+        count: 1
       }
     ]
   }
@@ -299,11 +317,10 @@ app.post('/api/login', cors(),function (req,res){
        return 0;
     }
   });
-
  if(find.length !==0 ){
    let payload = { subject: find.id };
    let token = jwt.sign(payload,'secretKey');
-   res.status(200).send({token, name: find.name});
+   res.status(200).send({token, name: find[0].name});
  } else {
    res.status(401).send('Missing password or email');
  }
@@ -311,7 +328,7 @@ app.post('/api/login', cors(),function (req,res){
 
 //API GET PRODUCTS LIST
 app.get('/api/products',cors(),verifyToken,function(req, res){
-  res.send(PRODUCTS);
+  res.send(PRODUCTS.reverse());
 });
 
 //API CREATE PRODUCTS
@@ -322,11 +339,11 @@ app.post('/api/products/create',cors(),function(req, res){
     description: req.body.description,
     price: req.body.price
   };
-  PRODUCTS.push(product);
+  PRODUCTS.unshift(product);
   res.send(PRODUCTS);
 });
 
-//API UPDATEP RODUCTS
+//API UPDATE RODUCTS
 app.put('/api/products/update/:id',cors(),function(req, res){
   let newProduct = PRODUCTS.find(function(product){
     return product.id === Number(req.params.id)
@@ -343,7 +360,7 @@ app.delete('/api/products/:id',cors(),function(req, res){
   PRODUCTS = PRODUCTS.filter(function(product){
     return product.id !== Number(req.params.id)
   });
-  res.status(200).send(PRODUCTS)
+  res.status(200).send(PRODUCTS.reverse())
 });
 
 //API DUBLICATE PRODUCTS
@@ -355,12 +372,12 @@ app.post('/api/products/dublicate',cors(),function(req, res){
     price: req.body.price
   };
   PRODUCTS.push(product);
-  res.status(200).send(PRODUCTS);
+  res.status(200).send(PRODUCTS.reverse());
 });
 
 //API GET INVOICE LIST
 app.get('/api/invoice',cors(),verifyToken,function(req, res){
-  res.send(INVOICE);
+  res.send(INVOICE.reverse());
 });
 
 //API ADD NEW INVOICE
@@ -372,7 +389,7 @@ app.post('/api/invoice/create',cors(),function(req, res){
     totalPrice: req.body.totalPrice,
     products: req.body.products
   };
-  INVOICE.push(invoice);
+  INVOICE.unshift(invoice);
   res.send(INVOICE);
 });
 
@@ -381,7 +398,7 @@ app.delete('/api/invoices/delete/:id',cors(),function(req, res){
   INVOICE = INVOICE.filter(function(inv){
     return inv.id !== Number(req.params.id)
   });
-  res.send(INVOICE);
+  res.send(INVOICE.reverse());
 });
 
 //API GET SELECT INVOICE
@@ -414,7 +431,7 @@ app.put('/api/invoice/edit/:id',cors(),function(req, res){
   newInvoice.totalPrice = Number(req.body.totalPrice);
   newInvoice.products = req.body.products;
 
-  res.send(INVOICE);
+  res.send(INVOICE.reverse());
 });
 
 

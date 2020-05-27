@@ -27,7 +27,8 @@ export class BacketComponent implements OnInit, OnDestroy {
     this.invoiceForms = new FormGroup({
       id: new FormControl(itm['id'], Validators.required),
       name: new FormControl(itm['name'], Validators.required),
-      price: new FormControl(itm['price'], [Validators.required,Validators.min(0)]),
+      price: new FormControl(itm['price'], [Validators.required,Validators.min(1)]),
+      count: new FormControl(itm['count'],[Validators.required,Validators.min(1)]),
       discount: new FormControl(itm['discount'], [Validators.required,Validators.min(0),Validators.max(100)]),
       description: new FormControl(itm['description'], Validators.required)
     });

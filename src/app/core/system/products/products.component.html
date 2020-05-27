@@ -1,0 +1,72 @@
+<ng-container *ngIf="isLoad === false">
+  <mat-spinner></mat-spinner>
+</ng-container>
+<div class="TableBlock" *ngIf="isLoad === true">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12">
+        <h2 class="title-page"><i class="fas fa-boxes"></i> Продукти</h2>
+      </div>
+      <div class="col-xl-4 col-lg-4">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <mat-select (selectionChange) = "selectFilter($event)" [(value)]="select">
+            <mat-option value="default">Default</mat-option>
+            <mat-option value="nameup">Ім'я A-я</mat-option>
+            <mat-option value="namedown">Ім'я Я-а</mat-option>
+            <mat-option value="priceup">Від найдорожчих</mat-option>
+            <mat-option value="pricedown">Від найдешевших</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-4 col-lg-4">
+        <mat-form-field class="example-full-width">
+          <mat-label>Пошук продуктів</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
+        </mat-form-field>
+      </div>
+      <div class="col-xl-4 col-lg-4">
+        <button class="btn-successe" (click)="createProduct()"><i class="fas fa-box"></i>  Добавити продукт</button>
+      </div>
+      <div class="col-xl-12 col-lg-12">
+        <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> Позиція</th>
+            <td mat-cell *matCellDef="let element; index as i "> {{i}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Назва продукту </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Опис </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Ціна </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef class="colPositon"> Дії </th>
+            <td mat-cell *matCellDef="let row">
+              <ul>
+                <li><button type="button"  class="btn-edit" (click)="editProduct(row)"><i class="fas fa-pen"></i> Редагувати</button></li>
+                <li><button type="button"  class="btn-dubl" (click)="dublicateProduct(row)"><i class="fas fa-clone"></i> Дублювати</button></li>
+                <li><button type="button"  class="btn-del" (click)="deteleProduct(row)"><i class="fas fa-trash"></i> Видалити</button></li>
+              </ul>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

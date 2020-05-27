@@ -61,8 +61,6 @@ export class ActionInvoiceComponent implements OnInit, OnDestroy {
           () => this.toastrService.error('Помилка обновлення інвойсу'));
     } else {
       if (this.invForm.valid) {
-        console.log(this.invForm.valid);
-        console.log(this.invForm)
         if ( this.selectProducts.length !== 0) {
           this.invoiceService.addInvoice(this.invObject())
             .pipe(takeUntil(this.unsubscribe))
@@ -143,7 +141,7 @@ export class ActionInvoiceComponent implements OnInit, OnDestroy {
     }
     event.container.data.forEach(el => {
       if ( el.hasOwnProperty('discount') === false ) {
-         Object.assign(el,{discount: 0})
+         Object.assign(el,{discount: 0, count: 1});
       }
     });
     this.changePrice();
@@ -151,11 +149,11 @@ export class ActionInvoiceComponent implements OnInit, OnDestroy {
 
   changePrice() {
     const formArray  = this.selectProducts.map( form => {
-      return form.price;
+      return form.price * form.count;
     });
     const formDiscountArray = this.selectProducts.map( form => {
       if ( form.discount !== 0 ) {
-        return  ( form.price * form.discount ) / 100;
+        return  ( form.price * form.count * form.discount ) / 100;
       } else {
         return Number(0);
       }
@@ -177,6 +175,7 @@ export class ActionInvoiceComponent implements OnInit, OnDestroy {
         Object.assign(form,{
           name: item['name'],
           price: item['price'],
+          count: item['count'],
           discount: item['discount'],
           description: item['description']
         });
