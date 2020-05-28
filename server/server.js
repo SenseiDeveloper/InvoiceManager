@@ -81,7 +81,7 @@ let PRODUCTS = [
     description: 'eating',
     price: 26
   }
-];
+].reverse();
 
 let INVOICE = [
   {
@@ -260,7 +260,7 @@ let INVOICE = [
       }
     ]
   }
-];
+].reverse();
 
 //VERIFICATION TOKEN
 function verifyToken(req,res,next){
@@ -328,7 +328,7 @@ app.post('/api/login', cors(),function (req,res){
 
 //API GET PRODUCTS LIST
 app.get('/api/products',cors(),verifyToken,function(req, res){
-  res.send(PRODUCTS.reverse());
+  res.send(PRODUCTS);
 });
 
 //API CREATE PRODUCTS
@@ -360,7 +360,7 @@ app.delete('/api/products/:id',cors(),function(req, res){
   PRODUCTS = PRODUCTS.filter(function(product){
     return product.id !== Number(req.params.id)
   });
-  res.status(200).send(PRODUCTS.reverse())
+  res.status(200).send(PRODUCTS)
 });
 
 //API DUBLICATE PRODUCTS
@@ -372,12 +372,12 @@ app.post('/api/products/dublicate',cors(),function(req, res){
     price: req.body.price
   };
   PRODUCTS.push(product);
-  res.status(200).send(PRODUCTS.reverse());
+  res.status(200).send(PRODUCTS);
 });
 
 //API GET INVOICE LIST
 app.get('/api/invoice',cors(),verifyToken,function(req, res){
-  res.send(INVOICE.reverse());
+  res.send(INVOICE);
 });
 
 //API ADD NEW INVOICE
@@ -398,7 +398,7 @@ app.delete('/api/invoices/delete/:id',cors(),function(req, res){
   INVOICE = INVOICE.filter(function(inv){
     return inv.id !== Number(req.params.id)
   });
-  res.send(INVOICE.reverse());
+  res.send(INVOICE);
 });
 
 //API GET SELECT INVOICE
@@ -431,7 +431,7 @@ app.put('/api/invoice/edit/:id',cors(),function(req, res){
   newInvoice.totalPrice = Number(req.body.totalPrice);
   newInvoice.products = req.body.products;
 
-  res.send(INVOICE.reverse());
+  res.send(INVOICE);
 });
 
 

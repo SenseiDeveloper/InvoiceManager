@@ -7,16 +7,16 @@ Use:
 - Drag and drop;
 
 
--bug invoice minus value form;
+- bug invoice minus value form - fix(remove after update);
 
 - add counter to form invoice - fix(remove after update);
 
--api corect arrey ;
+- api corect arrey - fix(remove after update);
 
 - style button table - fix(remove after update);
 
 - router click button link incorect style - fix(remove after update);
 
--check style large display;
+- check style large display - fix(remove after update);
 
--ckeck loader;
+- ckeck loader - fix(remove after update);

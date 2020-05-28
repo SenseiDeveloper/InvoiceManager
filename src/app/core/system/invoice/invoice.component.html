@@ -1,7 +1,5 @@
-<ng-container *ngIf="isLoad === false">
-  <mat-spinner></mat-spinner>
-</ng-container>
-<div class="TableBlock" *ngIf="isLoad === true">
+
+<div class="TableBlock">
   <div class="container">
     <div class="row">
       <div class="col-xl-12 col-lg-12">
@@ -22,14 +20,19 @@
       <div class="col-xl-4 col-lg-4">
         <mat-form-field class="example-full-width">
           <mat-label>Пошук інвойсів</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Пошук інвойсів">
+          <input matInput (keyup)="applyFilter($event)" placeholder="Пошук інвойсів" >
         </mat-form-field>
       </div>
       <div class="col-xl-4 col-lg-4">
         <button class="btn-successe" [routerLink]="['/system/action-invoice']"><i class="fas fa-receipt"></i>  Створити інвойс</button>
       </div>
+      <div class="col-xl-12">
+        <ng-container *ngIf="isLoad === false">
+          <mat-spinner></mat-spinner>
+        </ng-container>
+      </div>
       <div class="col-xl-12 col-lg-12">
-        <table mat-table [dataSource]="invoices" class="mat-elevation-z8">
+        <table mat-table [dataSource]="invoices" class="mat-elevation-z8" *ngIf="isLoad === true">
 
           <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef> Позиція </th>

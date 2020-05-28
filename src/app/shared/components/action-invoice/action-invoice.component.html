@@ -68,7 +68,7 @@
              [cdkDragData]="item"
              *ngFor="let item of selectProducts"
              cdkDrag >
-              <app-backet [itm]="item" (valueChange)="formValue($event)"></app-backet>
+              <app-backet [itm]="item" (valueChange)="formValue($event)" (formStatus)="formState($event)"></app-backet>
         </div>
         <button class="btn-successe" (click)="submit()" >
           <i class="fas fa-shopping-basket"></i>

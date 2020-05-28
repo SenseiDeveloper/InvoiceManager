@@ -30,6 +30,7 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {ChartsBarComponent} from "../../shared/components/charts-bar/charts-bar.component";
 import {MatRadioModule} from "@angular/material/radio";
 import {ChartsAdvancedComponent} from "../../shared/components/charts-advanced/charts-advanced.component";
+import {InvoiceFormsService} from "../../shared/service/invoice-forms.service";
 
 
 @NgModule({
@@ -67,7 +68,7 @@ import {ChartsAdvancedComponent} from "../../shared/components/charts-advanced/c
     NgxChartsModule,
     MatRadioModule
   ],
-  providers: [ ProductService, InvoiceService],
+  providers: [ ProductService, InvoiceService, InvoiceFormsService],
   entryComponents: [ProductModalComponent]
 })
 export class SystemModule { }

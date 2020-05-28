@@ -10,6 +10,7 @@ import {ToastrService} from "ngx-toastr";
 import {InvoiceService} from "../../service/invoice.service";
 import {InvoiceModel} from "../../model/invoice.model";
 import {ActivatedRoute, Router} from "@angular/router";
+import {InvoiceFormsService} from "../../service/invoice-forms.service";
 
 @Component({
   selector: 'app-create-invoice',
@@ -30,7 +31,8 @@ export class ActionInvoiceComponent implements OnInit, OnDestroy {
     private toastrService: ToastrService,
     private invoiceService: InvoiceService,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private invoiceFormService: InvoiceFormsService
   ) {}
 
   ngOnInit() {
@@ -48,20 +50,25 @@ export class ActionInvoiceComponent implements OnInit, OnDestroy {
     });
   }
 
+
   submit() {
-    if ( this.router.url !== '/system/action-invoice' ) {
+    if ( this.router.url !== '/system/action-invoice') {
       const editObject = Object.assign(this.invObject(),{
         id: +this.activeRoute.snapshot.params.id
       });
 
-      this.invoiceService.editInvoice(editObject)
-        .pipe(takeUntil(this.unsubscribe))
-        .subscribe((invoice: InvoiceModel[]) =>
-            this.successInvoice('Інвойс обновлено'),
-          () => this.toastrService.error('Помилка обновлення інвойсу'));
+      if(this.invoiceFormService.getStatus() === true){
+        this.invoiceService.editInvoice(editObject)
+          .pipe(takeUntil(this.unsubscribe))
+          .subscribe((invoice: InvoiceModel[]) =>
+              this.successInvoice('Інвойс обновлено'),
+            () => this.toastrService.error('Помилка обновлення інвойсу'));
+      } else{
+        this.toastrService.error("Значення не можуть бути від'ємними");
+      }
     } else {
       if (this.invForm.valid) {
-        if ( this.selectProducts.length !== 0) {
+        if ( this.selectProducts.length !== 0 && this.invoiceFormService.getStatus() === true) {
           this.invoiceService.addInvoice(this.invObject())
             .pipe(takeUntil(this.unsubscribe))
             .subscribe(() =>
@@ -69,7 +76,7 @@ export class ActionInvoiceComponent implements OnInit, OnDestroy {
               () => this.toastrService.error('Помилка створення інвойсу')
             );
         } else {
-          this.toastrService.error('Добавте продукт до контейнеру');
+          this.toastrService.error('Добавте продукт до контейнеру або коректно заповніть його');
         }
       } else {
         this.toastrService.error("Поля ім'я і дата обов'язкові");

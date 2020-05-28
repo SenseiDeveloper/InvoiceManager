@@ -41,8 +41,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .subscribe( (products: ProductModel[]) => {
         this.products.data = products;
         this.defaultProducts = products;
-        setTimeout(() => this.isLoad = true, 500);
-      });
+        },
+        () => console.log('504'),
+        () => setTimeout(() => this.isLoad = true, 300));
   }
 
   updateData() {

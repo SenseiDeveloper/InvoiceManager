@@ -47,8 +47,9 @@ export class InvoiceComponent implements OnInit, OnDestroy {
       .subscribe( (invoices: InvoiceModel[]) => {
         this.invoices.data = invoices;
         this.defaultInvoices = invoices;
-        setTimeout(() => this.isLoad = true, 500);
-      });
+      },
+      ()=> console.log('504'),
+      () => setTimeout(() => this.isLoad = true, 300));
   }
 
   filterName() {

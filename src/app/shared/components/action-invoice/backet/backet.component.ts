@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {takeUntil} from "rxjs/operators";
+import { takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
 import {ProductModel} from "../../../model/product.model";
+import {InvoiceFormsService} from "../../../service/invoice-forms.service";
 
 @Component({
   selector: 'app-backet',
@@ -16,7 +17,9 @@ export class BacketComponent implements OnInit, OnDestroy {
   @Input() itm: ProductModel[];
   @Output() valueChange = new EventEmitter<ProductModel[]>();
 
-  constructor() { }
+  constructor(
+    private invoiceFromsService: InvoiceFormsService
+  ) { }
 
   ngOnInit() {
     this.initForm(this.itm);
@@ -38,9 +41,12 @@ export class BacketComponent implements OnInit, OnDestroy {
     this.invoiceForms.valueChanges
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((item: ProductModel[]) => {
-          this.valueChange.emit(item);
+        this.valueChange.emit(item);
+        const newForms = Object.assign({id:item['id'], status: this.invoiceForms.status});
+        this.invoiceFromsService.getForms(newForms);
       });
   }
+
 
   ngOnDestroy(): void {
     this.unsubscribe.next();
