@@ -7,7 +7,8 @@ Use:
 - Drag and drop;
 
 # Start
-- git clone https://github.com/SenseiDeveloper/InvoiceManager
+- git clone https://github.com/SenseiDeveloper/InvoiceManager;
+- npm i;
 - npm start (start angular project);
 - cd server;
 - node server (start node express server);
